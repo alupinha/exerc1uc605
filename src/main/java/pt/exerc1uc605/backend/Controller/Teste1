@@ -1,0 +1,11 @@
+public pt.exerc1uc605.backend.controller;
+
+@RestController
+public class Teste1{
+
+        @GetMapping("/hello")
+    
+    public String hello () {
+        return "Olá Paula";
+    }
+}
