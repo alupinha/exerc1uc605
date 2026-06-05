@@ -28,11 +28,12 @@ import pt.exerc1uc605.backend.Enums.Status;
 @SQLDelete(sql = "UPDATE course SET status = 1 WHERE id = ?")
 
 public class Course {
- @Id
+    
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("_id")
     private Long id;
-
+    
     @Length(min =2, max = 100)
     @Nonnull
     @NotBlank
@@ -50,5 +51,10 @@ public class Course {
     @JoinColumn(name = "course_id")
     private List<Lesson> lessons = new ArrayList<>();
 
+    public void setCategory(pt.exerc1uc605.backend.Enums.Category backend) {
+        throw new UnsupportedOperationException("Unimplemented method 'setCategory'");
+    }
+
 }
+
 
