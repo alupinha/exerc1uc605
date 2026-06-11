@@ -47,4 +47,15 @@ public class CourseService {
 
    }
 
+   public Course updateCourse(@Positive @NonNull Long id, Course frontCourse) {
+      return this.repository.findById(id).map(backCourse -> {
+         backCourse.setName(frontCourse.getName());
+         backCourse.setCategory(frontCourse.getCategory());
+         backCourse.getLessons().clear();
+         frontCourse.getLessons().forEach(data -> backCourse.getLessons().add(data));
+         this.repository.save(backCourse);
+         return backCourse;
+      }).orElseThrow(() -> new ResourceNotFoundException("Course not found ID: " + id));
+   }
+
 }
